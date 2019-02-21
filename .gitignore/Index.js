@@ -263,8 +263,8 @@ bot.on('message', async message => {
 			let PC = "547915203472523266";
 			let PS4 = "547915249039441921";
 			let XBOX = "547915282459394091";
-			let NoMicro = "548100781828603906";
-			let Videaste = "548100886271098881";
+			let NoMicro = "548100886271098881";
+			let Videaste = "548100781828603906";
 			
 
 

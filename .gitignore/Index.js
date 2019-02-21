@@ -308,7 +308,7 @@ bot.on('message', async message => {
 							case "📟":
 								message.member.addRole(PS4);
 								break;
-							case ":XBox: ":
+							case "📱":
 								message.member.addRole(XBOX);
 								break;
 							case "🎥":

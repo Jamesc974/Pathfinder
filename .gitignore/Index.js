@@ -22,22 +22,6 @@ fs.readdir("./commands/", (err, files) => {
       });
 });
 
-bot.on('message', message => {
-  if (message.content === prefix + "rolelist") {
-    var iconb = bot.user.avatarURL;
-    var iconm = message.author.avatarURL
-    var name = message.guild.id
-    var statsmsg = new Discord.RichEmbed()
-    .setAuthor("InfoRoles - Loup Omega", iconb)
-    .addField(`Roles¬`, '`'+ bot.guilds.get(name).roles.map(r => r.name).join(", ") + '`')
-    .setColor("#A901DB")
-    .setFooter(`Demandé par ${message.author.tag}`, iconm)
-    
-    message.delete().catch(O_o=>{});
-    message.channel.sendMessage(statsmsg);
-  }
-}); 
-
 bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
@@ -76,8 +60,7 @@ bot.on('message', message => {
         `
         Sont interdits les comportements suivant (le non-respect de ces interdictions peuvent s'ensuivre d'un ban)
         • Le troll
-        • Tout comportement discriminatoire/haine/insultant (homophobie "Kowine", racisme, sexisme, etc...)
-        • Tout message ou photo de profil à caractère pornographique, pédophile.
+        • Tout comportement discriminatoire/haine/insultant (homophobie, racisme, sexisme, etc...)
         • Le partage d'informations privées sans le consentement de la personne concernée.
         • Les double comptes
         • Le contournement de mute, ban, et autres sanctions.
@@ -85,53 +68,17 @@ bot.on('message', message => {
         .setColor("#CD2929")
       var embed5 = new Discord.RichEmbed()
         .setAuthor("Bienvenue !", iconm)
-        .addField("si votre compte Discord n'a pas son adresse e-mail de vérifiée, vous ne serrez pas apte à ècrire dans ce salon. une fois ceci fait,", "vous n'aurez plus qu'a entrer sois `" + `!accepte` + "` sois `" + `!refuser` + "`")
+        .addField("si votre compte Discord n'a pas son adresse e-mail de vérifiée, vous ne serrez pas apte à ècrire dans ce salon.")
         .setColor("#A901DB")
         .setTimestamp()
-        .setFooter("Create by Zεяsтöяυη")
+        .setFooter("Create by TarKyo")
       message.delete().catch(O_o=>{});
-      message.guild.channels.find("name", "sécurité").sendEmbed(embed1)
-      message.guild.channels.find("name", "sécurité").sendEmbed(embed2)
-      message.guild.channels.find("name", "sécurité").sendEmbed(embed5)
+      message.guild.channels.find("name", "📃-règlement").sendEmbed(embed1)
+      message.guild.channels.find("name", "📃-règlement").sendEmbed(embed2)
+      message.guild.channels.find("name", "📃-règlement").sendEmbed(embed5)
     }else{
       return message.reply("Tu n'as pas la permission.")
   }}});
-
-//-----------------------------------------------------------------------------------------
-//-------------------------------Accepte / refuser-----------------------------------------
-//-----------------------------------------------------------------------------------------
-
-bot.on('message', message => {
-  if (message.content === '!accepte') {
-    if(message.channel.id == "484039928494424085") {
-      var RoleToAdd = message.guild.roles.find('name', '🌟 Membres');
-      let nRole = message.guild.roles.find(`name`,'👤 Visiteur');
-      var memberCount = bot.users.size;
-      var iconb = bot.user.avatarURL
-      var iconm = message.author.avatarURL
-      var servercount = bot.guilds.size;
-      message.delete().catch(O_o=>{});
-      message.member.addRole(RoleToAdd);
-      message.member.removeRole(nRole);
-    }
-  }
-});
-
-bot.on('message', message => {
-  if (message.content === '!refuser') {
-    if(message.channel.id == "484039928494424085") {
-      var RoleToAdd = message.guild.roles.find('name', '📛 Membre bloquer');
-      let nRole = message.guild.roles.find(`name`,'👤 Visiteur');
-      var memberCount = bot.users.size;
-      var iconb = bot.user.avatarURL
-      var iconm = message.author.avatarURL
-      var servercount = bot.guilds.size;
-      message.delete().catch(O_o=>{});
-      message.member.addRole(RoleToAdd);
-      message.member.removeRole(nRole);
-    }
-  }
-});
 
 //-----------------------------------------------------------------------------------------
 //--------------------------------------Role-----------------------------------------------
@@ -144,24 +91,18 @@ bot.on('message', message => {
       let thingToEcho = args.join(" ")
       var iconm = message.author.avatarURL
       var embed11 = new Discord.RichEmbed()
-        .addField(":bust_in_silhouette: TRPIP", "Il s’agit du rôle que vous obtenez en arrivant sur le serveur Discord.")
+        .addField(":video_game: Joueur", "Il s’agit du rôle que vous obtenez en arrivant sur le serveur Discord.")
         .setColor("#151414")
-      var embed22 = new Discord.RichEmbed()
-        .addField(":underage: 18+",
-        `Pour avoir ce rôle il vous faut juste être mature`)
-        .addField("Pour avoir le grade", `faite !18+, ensuite un staff viendra vous parlez`)
-        .setColor("#6B1979")
       var role = new Discord.RichEmbed()
-        .addField(":milky_way: Rôles général", 'Ces différents rôles peuvent être obtenu en ajoutant la réaction qui lui est associé.\nSi tu cherhe as avoir un role fait `' + `!role` +'` dans #les-commande-bot ')
+        .addField(":milky_way: Rôles général", 'Ces différents rôles peuvent être obtenu en ajoutant la réaction qui lui est associé.\nSi tu cherhe as avoir un role fait `' + `!role` +'` dans #💡-commandes ')
         .setColor("#4354C0")
       var jeu = new Discord.RichEmbed()
-        .addField("🎮 Rôles Jeux", 'Ces différents rôles peuvent être obtenu en ajoutant la réaction qui lui est associé. Si tu cherhe as avoir un role jeu fait `' + `!jeux` +'`')
+        .addField("👤 Personnage", 'Ces différents rôles peuvent être obtenu en ajoutant la réaction qui lui est associé. Si tu cherhe as avoir un role jeu fait `' + `!perso` +'`')
         .setColor("#0E8CB3")
       message.delete().catch(O_o=>{});
-      message.guild.channels.find("name", "role").sendEmbed(embed11)
-      message.guild.channels.find("name", "role").sendEmbed(embed22)
-      message.guild.channels.find("name", "role").sendEmbed(role)
-      message.guild.channels.find("name", "role").sendEmbed(jeu)
+      message.guild.channels.find("name", "🌀-rôles").sendEmbed(embed11)
+      message.guild.channels.find("name", "🌀-rôles").sendEmbed(role)
+      message.guild.channels.find("name", "🌀-rôles").sendEmbed(jeu)
     }else{
       return message.reply("Tu n'as pas la permission.")
   }}});
@@ -195,8 +136,8 @@ bot.on('message', message => {
 
 bot.on('message', message => {
   if (message.content.startsWith(prefix + "annonce")) {
-    if(message.author.id == "404351381093351425") {
-      if(message.channel.id == "484046684859400192") {
+    if(message.author.id == "104935392658137088") {
+      if(message.channel.id == "547830748258893852") {
         let args = message.content.split(" ").slice(1);
         let thingToEcho = args.join(" ")
         var iconm = message.author.avatarURL
@@ -224,7 +165,7 @@ bot.on('message', message => {
 
 bot.on('message', message => {
   if (message.content.startsWith(prefix + "idee")) {
-    if(message.channel.id == "484045711017508875") {
+    if(message.channel.id == "547930283328929793") {
       let args = message.content.split(" ").slice(1);
       let thingToEcho = args.join(" ")
       var iconm = message.author.avatarURL
@@ -244,40 +185,17 @@ bot.on('message', message => {
   }
 });
 
-//-----------------------------------------------------------------------------------------
-//---------------------------------------18+-----------------------------------------------
-//-----------------------------------------------------------------------------------------
-
-bot.on('message', message => {
-  if (message.content.startsWith(prefix + "18+")) {
-    if(message.channel.id == "501843188865171457") {
-      var iconm = message.author.avatarURL
-      var embed = new Discord.RichEmbed()
-        .setAuthor(`${message.author.tag}`, iconm)
-        .addField("Demande d'avoir le grade 18+", "Chercher des info sur la personnes")
-        .setColor("#A901DB")
-        .setTimestamp()
-      message.delete().catch(O_o=>{});
-      message.guild.channels.find("name", "moderation").sendEmbed(embed)
-      .then(function (message) {
-        message.react("👍")
-        message.react("👎")
-      })
-    }
-  }
-});
-
 bot.login(process.env.TOKEN);
 
 bot.on('guildMemberAdd', member => {
   var welcomemsg = new Discord.RichEmbed()
   .setColor("#009900")
   .setDescription(`${member}, nous te souhaitons la bienvenue :wave:`)
-  var welcomemsgsend = member.guild.channels.find("name", "salon-accueil")
+  var welcomemsgsend = member.guild.channels.find("name", "👤-salon-accueil")
   if(!welcomemsgsend) return;
 
   welcomemsgsend.sendEmbed(welcomemsg);
-  var role = member.guild.roles.find('name', '👤 TRPIP');
+  var role = member.guild.roles.find('name', '🎮 Joueur');
   member.addRole(role)
 });
 
@@ -285,7 +203,7 @@ bot.on('guildMemberRemove', member => {
  var welcomemsg = new Discord.RichEmbed()
   .setColor("#bc0000")
   .setDescription(`${member}, nous a quitté. :wave: ! `)
-  var welcomemsgsend = member.guild.channels.find(`name`, "salon-accueil")
+  var welcomemsgsend = member.guild.channels.find(`name`, "👤-salon-accueil")
   if(!welcomemsgsend) return;
 
   welcomemsgsend.sendEmbed(welcomemsg);
@@ -342,12 +260,11 @@ bot.on('message', async message => {
 		if (isCommand('role')) {
 
 			//role id for the years
-			let graph = "501841783177609226";
-			let impri = "501841729792639026";
-			let Joueur = "547358901683879936";
-			let Ami = "542104863488737300";
-			let Homme = "501844746897981459";
-			let Femme = "501844945519378442"
+			let PC = "547915203472523266";
+			let PS4 = "547915249039441921";
+			let XBOX = "547915282459394091";
+			let NoMicro = "548100781828603906";
+			let Videaste = "548100886271098881";
 			
 
 
@@ -361,25 +278,23 @@ bot.on('message', async message => {
 					.setTitle("Bienvenue sur le serveur")
 					.setDescription("*Merci d'indiquer t'es roles que tu désire*")
 					.setColor("#8B008B")
-					.addField("Graphiste", "🌠", true)
-					.addField("Imprimeur", "📖", true)
-					.addField("Joueur", "🎮", true)
-					.addField("Ami", "💓", true)
-					.addField("Homme", "👔", true)
-					.addField("Femme", "👗", true)
+					.addField("PC", "💻", true)
+					.addField("PS4", "📟", true)
+					.addField("XBOX", "📱", true)
+					.addField("Videaste", "🎥", true)
+					.addField("NoMicro", "🔇", true)
 					.setFooter("créé par TarKyo");
 
 				//send embed ans add reaction
 				message.author.send({ embed: yearChoose }).then(async embedMessage => {
-					await embedMessage.react("🌠");
-					await embedMessage.react("📖");
-					await embedMessage.react("🎮");
-					await embedMessage.react("💓");
-					await embedMessage.react("👔");
-					await embedMessage.react("👗");
+					await embedMessage.react("💻");
+					await embedMessage.react("📟");
+					await embedMessage.react("📱");
+					await embedMessage.react("🎥");
+					await embedMessage.react("🔇");
 
 					// Create a reaction collector
-					const filter = (reaction, user) => (reaction.emoji.name === "🌠" || reaction.emoji.name === "📖" || reaction.emoji.name === "🎮" || reaction.emoji.name === "💓" || reaction.emoji.name === "👔" || reaction.emoji.name === "👗" ) && user.id === messageAuthorId
+					const filter = (reaction, user) => (reaction.emoji.name === "💻" || reaction.emoji.name === "📟" || reaction.emoji.name === "📱" || reaction.emoji.name === "🎥" || reaction.emoji.name === "🔇" ) && user.id === messageAuthorId
 					// (reaction.emoji.name === "🎮" || reaction.emoji.name === "📷" || reaction.emoji.name === "🌠" || reaction.emoji.name === "📖" || reaction.emoji.name === "🖌" || reaction.emoji.name === "🎁" || reaction.emoji.name === "🌌" || reaction.emoji.name === "⚡" || reaction.emoji.name === "🐺" ) && user.id === messageAuthorId
 					const collector = embedMessage.createReactionCollector(filter, { time: 555555555 ,max: 9999, maxEmojis: 99999, maxUsers: 9999 })
 					await collector.on("collect", async MessageReaction => {
@@ -387,23 +302,20 @@ bot.on('message', async message => {
 						const chosen = MessageReaction.emoji.name;
 
 						switch (chosen) {
-							case "🌠":
-								message.member.addRole(graph);
+							case "💻":
+								message.member.addRole(PC);
 								break;
-							case "📖":
-								message.member.addRole(impri);
+							case "📟":
+								message.member.addRole(PS4);
 								break;
-							case "🎮":
-								message.member.addRole(Joueur);
+							case ":XBox: ":
+								message.member.addRole(XBOX);
 								break;
-							case "💓":
-								message.member.addRole(Ami);
+							case "🎥":
+								message.member.addRole(Videaste);
 								break;
-							case "👔":
-								message.member.addRole(Homme);
-								break;
-							case "👗":
-								message.member.addRole(Femme);
+							case "🔇":
+								message.member.addRole(NoMicro);
 								break;
 						}
 					});

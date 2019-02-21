@@ -351,16 +351,14 @@ bot.on('message', async message => {
 		if (isCommand('jeux')) {
 
 			//role id for the years
-			let leagueoflegends = "547777111835017246";
-			let Minecraft = "547777538945187840";
-			let CSGO = "547777583467724800";
-			let ArmaIII = "547777651449004033";
-			let ApexLegends = "547777705236496384";
-			let GTAV = "547777770466574336";
-			let RocketLeague = "547777822551179265";
-			let Scum = "547777871263957013";
-			let Garrysmod = "547777934585233417";
-			
+			let Bloodhound = "548136498570985472";
+			let Gibraltar = "548136557090177049";
+			let Lifeline = "548136588786532362";
+			let Pathfinder = "548136620302270465";
+			let Wraith = "548136670151835649";
+			let Bangalore = "548136697385451541";
+			let Caustic = "548136712149139463";
+			let Mirage = "548136766708645889";
 
 
 			if (message.member.roles.has("359433618512150539")) { return sendError(message, `Impossible d\'effectuer l\'action, vous êtes déjà considéré comme présenté. Si \n besoin envoyé un message à <@175586990916501505> ou <@&356867242924965889>`); }
@@ -372,32 +370,30 @@ bot.on('message', async message => {
 					.setTitle("Bienvenue sur le serveur")
 					.setDescription("*Merci d'indiquer t'es roles que tu désire*")
 					.setColor("#8B008B")
-					.addField("League Of Legends", "🌠", true)
-					.addField("Minecraft", "🌍", true)
-					.addField("CSGO", "💣", true)
-					.addField("Arma III", "🔫", true)
-					.addField("Apex Legends", "🌀", true)
-					.addField("GTA V", "🏦", true)
-					.addField("Rocket League", "🚀", true)
-					.addField("Scum", "🛡", true)
-					.addField("Garry's Mod", "🔵", true)
+					.addField("Bloodhound", "1️⃣", true)
+					.addField("Gibraltar", "2️⃣", true)
+					.addField("Lifeline", "3️⃣", true)
+					.addField("Pathfinder", "4️⃣", true)
+					.addField("Wraith", "5️⃣", true)
+					.addField("Bangalore", "6️⃣", true)
+					.addField("Caustic", "7️⃣", true)
+					.addField("Mirage", "8️⃣", true)
 					.addField("❓ Vous avez d'autres idées de jeux ?", "Faite le nous s'avoir", true)
 					.setFooter("By TarKyo");
 
 				//send embed ans add reaction
 				message.author.send({ embed: yearChoose }).then(async embedMessage => {
-					await embedMessage.react("🌠");
-					await embedMessage.react("🌍");
-					await embedMessage.react("💣");
-					await embedMessage.react("🔫");
-					await embedMessage.react("🌀");
-					await embedMessage.react("🏦");
-					await embedMessage.react("🚀");
-					await embedMessage.react("🛡");
-					await embedMessage.react("🔵");
+					await embedMessage.react("1️⃣");
+					await embedMessage.react("2️⃣");
+					await embedMessage.react("3️⃣");
+					await embedMessage.react("4️⃣");
+					await embedMessage.react("5️⃣");
+					await embedMessage.react("6️⃣");
+					await embedMessage.react("7️⃣");
+					await embedMessage.react("8️⃣");
 
 					// Create a reaction collector
-					const filter = (reaction, user) => (reaction.emoji.name === "🌠" || reaction.emoji.name === "🌍" || reaction.emoji.name === "💣" || reaction.emoji.name === "🔫" || reaction.emoji.name === "🌀" || reaction.emoji.name === "🏦" || reaction.emoji.name === "🚀" || reaction.emoji.name === "🛡" || reaction.emoji.name === "🔵" ) && user.id === messageAuthorId
+					const filter = (reaction, user) => (reaction.emoji.name === "1️⃣" || reaction.emoji.name === "2️⃣" || reaction.emoji.name === "3️⃣" || reaction.emoji.name === "4️⃣" || reaction.emoji.name === "5️⃣" || reaction.emoji.name === "6️⃣" || reaction.emoji.name === "7️⃣" || reaction.emoji.name === "8️⃣" ) && user.id === messageAuthorId
 					// (reaction.emoji.name === "🎮" || reaction.emoji.name === "📷" || reaction.emoji.name === "🌠" || reaction.emoji.name === "📖" || reaction.emoji.name === "🖌" || reaction.emoji.name === "🎁" || reaction.emoji.name === "🌌" || reaction.emoji.name === "⚡" || reaction.emoji.name === "🐺" ) && user.id === messageAuthorId
 					const collector = embedMessage.createReactionCollector(filter, { time: 555555555 ,max: 9999, maxEmojis: 99999, maxUsers: 9999 })
 					await collector.on("collect", async MessageReaction => {
@@ -405,32 +401,29 @@ bot.on('message', async message => {
 						const chosen = MessageReaction.emoji.name;
 
 						switch (chosen) {
-							case "🌠":
-								message.member.addRole(leagueoflegends);
+							case "1️⃣":
+								message.member.addRole(Bloodhound);
 								break;
-							case "🌍":
-								message.member.addRole(Minecraft);
+							case "2️⃣":
+								message.member.addRole(Gibraltar);
 								break;
-							case "💣":
-								message.member.addRole(CSGO);
+							case "3️⃣":
+								message.member.addRole(Lifeline);
 								break;
-							case "🔫":
-								message.member.addRole(ArmaIII);
+							case "4️⃣":
+								message.member.addRole(Pathfinder);
 								break;
-							case "🌀":
-								message.member.addRole(ApexLegends);
+							case "5️⃣":
+								message.member.addRole(Wraith);
 								break;
-							case "🏦":
-								message.member.addRole(GTAV);
+							case "6️⃣":
+								message.member.addRole(Bangalore);
 								break;
-							case "🚀":
-								message.member.addRole(RocketLeague);
+							case "7️⃣":
+								message.member.addRole(Caustic);
 								break;
-							case "🛡":
-								message.member.addRole(Scum);
-								break;
-							case "🔵":
-								message.member.addRole(Garrysmod);
+							case "8️⃣":
+								message.member.addRole(Mirage);
 								break;
 						}
 					});

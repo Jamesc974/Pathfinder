@@ -348,7 +348,7 @@ bot.on('message', async message => {
 	//BotChannel check
 	if (isBotChannel()) {
 
-		if (isCommand('jeux')) {
+		if (isCommand('perso')) {
 
 			//role id for the years
 			let Bloodhound = "548136498570985472";

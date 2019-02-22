@@ -212,6 +212,30 @@ bot.on('guildBanRemove', function(guild, user) {
 
 });
 
+
+//-----------------------------------------------------------------------------------------
+//---------------------------------------STREAM--------------------------------------------
+//-----------------------------------------------------------------------------------------
+
+bot.on('message', message => {
+  if (message.content.startsWith(prefix + "stream")) {
+    if(message.channel.id == "547930283328929793") {
+      var iconm = message.author.avatarURL
+      var embed = new Discord.RichEmbed()
+        .setAuthor(`${message.author.tag}`, iconm)
+        .addField("Demande d'avoir le grade 🎥 Streamer", "Chercher des info sur la personnes")
+        .setColor("#A901DB")
+        .setTimestamp()
+      message.delete().catch(O_o=>{});
+      message.guild.channels.find("name", "logs").sendEmbed(embed)
+      .then(function (message) {
+        message.react("👍")
+        message.react("👎")
+      })
+    }
+  }
+});
+
 //-----------------------------------------------------------------------------------------
 //------------------------------------Annonces---------------------------------------------
 //-----------------------------------------------------------------------------------------

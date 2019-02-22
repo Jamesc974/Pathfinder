@@ -370,30 +370,30 @@ bot.on('message', async message => {
 					.setTitle("Bienvenue sur le serveur")
 					.setDescription("*Merci d'indiquer t'es roles que tu désire*")
 					.setColor("#8B008B")
-					.addField("Bloodhound", "❤️ ", true)
-					.addField("Gibraltar", "2️⃣", true)
-					.addField("Lifeline", "3️⃣", true)
-					.addField("Pathfinder", "4️⃣", true)
-					.addField("Wraith", "5️⃣", true)
-					.addField("Bangalore", "6️⃣", true)
-					.addField("Caustic", "7️⃣", true)
-					.addField("Mirage", "8️⃣", true)
+					.addField("Bloodhound", "1⃣ ", true)
+					.addField("Gibraltar", "2⃣", true)
+					.addField("Lifeline", "3⃣", true)
+					.addField("Pathfinder", " 4⃣", true)
+					.addField("Wraith", "5⃣", true)
+					.addField("Bangalore", "6⃣", true)
+					.addField("Caustic", "7⃣", true)
+					.addField("Mirage", "8⃣", true)
 					.addField("❓ Vous avez d'autres idées de jeux ?", "Faite le nous s'avoir", true)
 					.setFooter("By TarKyo");
 
 				//send embed ans add reaction
 				message.author.send({ embed: yearChoose }).then(async embedMessage => {
-					await embedMessage.react("❤️");
-					await embedMessage.react("2️⃣");
-					await embedMessage.react("3️⃣");
-					await embedMessage.react("4️⃣");
-					await embedMessage.react("5️⃣");
-					await embedMessage.react("6️⃣");
-					await embedMessage.react("7️⃣");
-					await embedMessage.react("8️⃣");
+					await embedMessage.react("1⃣");
+					await embedMessage.react("2⃣");
+					await embedMessage.react("3⃣");
+					await embedMessage.react("4⃣");
+					await embedMessage.react("5⃣");
+					await embedMessage.react("6⃣");
+					await embedMessage.react("7⃣");
+					await embedMessage.react("8⃣");
 
 					// Create a reaction collector
-					const filter = (reaction, user) => (reaction.emoji.name === "❤️" || reaction.emoji.name === "2️⃣" || reaction.emoji.name === "3️⃣" || reaction.emoji.name === "4️⃣" || reaction.emoji.name === "5️⃣" || reaction.emoji.name === "6️⃣" || reaction.emoji.name === "7️⃣" || reaction.emoji.name === "8️⃣" ) && user.id === messageAuthorId
+					const filter = (reaction, user) => (reaction.emoji.name === "1⃣" || reaction.emoji.name === "2⃣" || reaction.emoji.name === "3⃣" || reaction.emoji.name === "4⃣" || reaction.emoji.name === "5⃣" || reaction.emoji.name === "6⃣" || reaction.emoji.name === "7⃣" || reaction.emoji.name === "8⃣" ) && user.id === messageAuthorId
 					// (reaction.emoji.name === "🎮" || reaction.emoji.name === "📷" || reaction.emoji.name === "🌠" || reaction.emoji.name === "📖" || reaction.emoji.name === "🖌" || reaction.emoji.name === "🎁" || reaction.emoji.name === "🌌" || reaction.emoji.name === "⚡" || reaction.emoji.name === "🐺" ) && user.id === messageAuthorId
 					const collector = embedMessage.createReactionCollector(filter, { time: 555555555 ,max: 9999, maxEmojis: 99999, maxUsers: 9999 })
 					await collector.on("collect", async MessageReaction => {
@@ -401,28 +401,28 @@ bot.on('message', async message => {
 						const chosen = MessageReaction.emoji.name;
 
 						switch (chosen) {
-							case "❤️":
+							case "1⃣":
 								message.member.addRole(Bloodhound);
 								break;
-							case "2️⃣":
+							case "2⃣":
 								message.member.addRole(Gibraltar);
 								break;
-							case "3️⃣":
+							case "3⃣":
 								message.member.addRole(Lifeline);
 								break;
-							case "4️⃣":
+							case "4⃣":
 								message.member.addRole(Pathfinder);
 								break;
-							case "5️⃣":
+							case "5⃣":
 								message.member.addRole(Wraith);
 								break;
-							case "6️⃣":
+							case "6⃣":
 								message.member.addRole(Bangalore);
 								break;
-							case "7️⃣":
+							case "7⃣":
 								message.member.addRole(Caustic);
 								break;
-							case "8️⃣":
+							case "8⃣":
 								message.member.addRole(Mirage);
 								break;
 						}

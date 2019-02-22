@@ -137,7 +137,7 @@ bot.on('message', message => {
 bot.on('message', message => {
   if (message.content.startsWith(prefix + "annonce")) {
     if(message.author.id == "104935392658137088") {
-      if(message.channel.id == "547830748258893852") {
+      if(message.channel.id == "547937263905013769") {
         let args = message.content.split(" ").slice(1);
         let thingToEcho = args.join(" ")
         var iconm = message.author.avatarURL
@@ -148,7 +148,7 @@ bot.on('message', message => {
           .setTimestamp()
           .setFooter(`Par ${message.author.tag}`)
         message.delete().catch(O_o=>{});
-        message.guild.channels.find("name", "annonces").sendEmbed(embed)
+        message.guild.channels.find("name", "📣-annonces").sendEmbed(embed)
         .then(function (message) {
           message.react("👍")
           message.react("👎")

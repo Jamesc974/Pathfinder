@@ -4,6 +4,8 @@ const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 const embed = new Discord.RichEmbed();
 bot.commands = new Discord.Collection();
+draincorp = "Tαrĸyo👅#0001";
+version = "0.1 🎉";
 prefix = "!";
 
 fs.readdir("./commands/", (err, files) => {
@@ -129,6 +131,86 @@ bot.on('message', message => {
     }else{
       return message.reply("Tu n'as pas la permission.")
   }}});
+
+//-----------------------------------------------------------------------------------------
+//------------------------------------ADMIN-BOT--------------------------------------------
+//-----------------------------------------------------------------------------------------
+
+bot.on('message', message => {
+  if (message.content === prefix + "botinfo") {
+    var iconb = bot.user.avatarURL;
+    var iconm = message.author.avatarURL
+    var name = message.guild.id
+    var memberCount = bot.users.size;
+    var servercount = bot.guilds.size;
+    var statsmsg = new Discord.RichEmbed()
+    .setAuthor("InfoBot - Pathfinder", iconb)
+    .setDescription(`Voici les statistiques à propos du bot .Le bot est divisé en plusieurs morceaux afin qu'il soit plus optimisé et qu'il soit plus agréable à l'utilisation. Vous ne verrez donc plus les stats dans sa globalité.`)
+    .setThumbnail(iconb)
+    .addField("Créateur¬", '`'+ draincorp + '`', true)
+    .addField("Version¬", '`'+ version + '`', true)
+    .addField(`Region¬`, '`'+ bot.guilds.get(name).region + '`', true)
+    .addField("Connecté à¬", '`'+ message.guild.name + '`', true)
+    .addField("Utilisateur sur le seveur¬", '`'+ message.guild.memberCount + '`', true)
+    .addField("Channel¬", '`'+ message.guild.channels.size +'`', true)
+    .addField("Prefix¬",'`'+ prefix +'`', true)
+    .addField("Créateur du dicord¬",`${bot.guilds.get(name).owner}`, true)
+    .setColor("#A901DB")
+    .setFooter(`Demandé par ${message.author.tag}`, iconm)
+    
+
+    message.delete().catch(O_o=>{});
+    message.channel.sendMessage(statsmsg);
+  }
+});
+
+bot.on('message', message => {
+  if (message.content === prefix + "rolelist") {
+    var iconb = bot.user.avatarURL;
+    var iconm = message.author.avatarURL
+    var name = message.guild.id
+    var statsmsg = new Discord.RichEmbed()
+    .setAuthor("Liste - Rôles - Pathfinder", iconb)
+    .addField(`Roles¬`, '`'+ bot.guilds.get(name).roles.map(r => r.name).join(", ") + '`')
+    .setColor("#A901DB")
+    .setFooter(`Demandé par ${message.author.tag}`, iconm)
+    
+    message.delete().catch(O_o=>{});
+    message.channel.sendMessage(statsmsg);
+  }
+});
+
+bot.on('guildBanAdd', function(guild, user) {
+
+    //log
+    console.log('[' + guild.name + '][BAN] ' + user.username + '#' + user.discriminator);
+
+    //post in the guild's log channel
+    var log = guild.channels.find('name', "logs")
+    var ajoutban = new Discord.RichEmbed()
+    .setTitle(":no_entry:  Un ban à été rajouté :no_entry:")
+    .setDescription(`:arrow_right: Joueur ban ${user}`)
+    .setColor("#bc0000")
+
+    if (log != null)
+        log.send(ajoutban);
+
+});
+
+bot.on('guildBanRemove', function(guild, user) {
+
+    console.log('[' + guild.name + '][UNBAN] ' + user.username + '#' + user.discriminator);
+
+    var log = guild.channels.find('name', "logs")
+    var retireban = new Discord.RichEmbed()
+    .setTitle(":no_entry:  Un ban à été retiré :no_entry:")
+    .setDescription(`:arrow_right: Joueur debanni ${user}`)
+    .setColor("#bc0000")
+
+    if (log != null)
+        log.send(retireban);
+
+});
 
 //-----------------------------------------------------------------------------------------
 //------------------------------------Annonces---------------------------------------------

@@ -370,7 +370,7 @@ bot.on('message', async message => {
 					.setTitle("Bienvenue sur le serveur")
 					.setDescription("*Merci d'indiquer t'es roles que tu désire*")
 					.setColor("#8B008B")
-					.addField("Bloodhound", "1️⃣", true)
+					.addField("Bloodhound", "❤️ ", true)
 					.addField("Gibraltar", "2️⃣", true)
 					.addField("Lifeline", "3️⃣", true)
 					.addField("Pathfinder", "4️⃣", true)
@@ -383,7 +383,7 @@ bot.on('message', async message => {
 
 				//send embed ans add reaction
 				message.author.send({ embed: yearChoose }).then(async embedMessage => {
-					await embedMessage.react("1️⃣");
+					await embedMessage.react("❤️");
 					await embedMessage.react("2️⃣");
 					await embedMessage.react("3️⃣");
 					await embedMessage.react("4️⃣");
@@ -393,7 +393,7 @@ bot.on('message', async message => {
 					await embedMessage.react("8️⃣");
 
 					// Create a reaction collector
-					const filter = (reaction, user) => (reaction.emoji.name === "1️⃣" || reaction.emoji.name === "2️⃣" || reaction.emoji.name === "3️⃣" || reaction.emoji.name === "4️⃣" || reaction.emoji.name === "5️⃣" || reaction.emoji.name === "6️⃣" || reaction.emoji.name === "7️⃣" || reaction.emoji.name === "8️⃣" ) && user.id === messageAuthorId
+					const filter = (reaction, user) => (reaction.emoji.name === "❤️" || reaction.emoji.name === "2️⃣" || reaction.emoji.name === "3️⃣" || reaction.emoji.name === "4️⃣" || reaction.emoji.name === "5️⃣" || reaction.emoji.name === "6️⃣" || reaction.emoji.name === "7️⃣" || reaction.emoji.name === "8️⃣" ) && user.id === messageAuthorId
 					// (reaction.emoji.name === "🎮" || reaction.emoji.name === "📷" || reaction.emoji.name === "🌠" || reaction.emoji.name === "📖" || reaction.emoji.name === "🖌" || reaction.emoji.name === "🎁" || reaction.emoji.name === "🌌" || reaction.emoji.name === "⚡" || reaction.emoji.name === "🐺" ) && user.id === messageAuthorId
 					const collector = embedMessage.createReactionCollector(filter, { time: 555555555 ,max: 9999, maxEmojis: 99999, maxUsers: 9999 })
 					await collector.on("collect", async MessageReaction => {
@@ -401,7 +401,7 @@ bot.on('message', async message => {
 						const chosen = MessageReaction.emoji.name;
 
 						switch (chosen) {
-							case "1️⃣":
+							case "❤️":
 								message.member.addRole(Bloodhound);
 								break;
 							case "2️⃣":
